@@ -1,12 +1,12 @@
 form.addEventListener('submit', async event => {
     event.preventDefault();
   
-    const data = new FormData(form);
+    const data = new FormData(form); //se crea el objeto FormData para recopilar los datos del formulario 
   
-    console.log(Array.from(data));
+    console.log(Array.from(data)); //convierte los datos en un array para verlos antes de la solicitud
   
     try {
-      const res = await fetch(
+      const response = await fetch(//realiza la solicitud con método POST 
         'https://jsonplaceholder.typicode.com/users',
         {
           method: 'POST',
@@ -14,11 +14,11 @@ form.addEventListener('submit', async event => {
         },
       );
   
-      const resData = await res.json();
+      const responseData = await response.json();
   
-      console.log(resData);
       console.log('submit success')
+      console.log(responseData); //muestra la respuesta del servidor
     } catch (err) {
-      console.log(err.message);
+      console.log(err.message); //maneja los posibles errores
     }
   });
